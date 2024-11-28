@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Services | Mental Health Hub</title>
+    <link rel="stylesheet" href="/styless.css">
+    <script type="text/javascript" src="script.js"></script>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <ul>
+                <li><a href="/" class="active">Home</a></li>
+                <li><a href="/about">About Us</a></li>
+                <li class="dropdown-container">
+                    <a href="/services">Services</a>
+                    <ul class="dropdown">
+                        <li><a href="/services/counseling">Counseling</a></li>
+                        <li><a href="/services/therapy">Therapy</a></li>
+                        <li><a href="/services/resources">Resources</a></li>
+                    </ul>
+                </li>
+                <li><a href="/contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <h2>Our Services</h2>
+    <main id="services">
+        <section class="services-list">
+            <div class="service" id="therapy" data-description="One-on-one sessions to support your mental well-being.">
+                <h3>Therapy</h3>
+            </div>
+            <div class="service" id="resources" data-description="Access self-help tools and guides for a healthier mind.">
+                <h3>Resources</h3>
+            </div>
+            <div class="service" id="ai-bot" data-description="Interact with our AI bot for mental health support and advice." onclick="openCmd()">
+        <h3>AI Bot</h3>
+    </div>
+
+    <script>
+    // Function to send a request to the backend when the AI Bot section is clicked
+    function openCmd() {
+        fetch('/open-cmd', {
+            method: 'GET'
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                alert('Command prompt opened successfully!');
+            } else {
+                alert('Failed to open the command prompt.');
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+    }
+</script>
+
+        </section>
+
+        <section id="ai-bot-response" style="margin-top: 20px;">
+            <!-- AI Bot responses will appear here -->
+        </section>
+
+        <section class="service-description">
+            <p>Hover over a service to see the description.</p>
+        </section>
+
+        <section class="faq-section">
+            <h2>Frequently Asked Questions (FAQ)</h2>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <img src="https://t4.ftcdn.net/jpg/02/31/09/95/360_F_231099575_lZ0t1s4lR3YtrQbeEqUPDqiW0UsQNKcy.jpg" alt="FAQ 1" class="faq-image">
+                    <div class="faq-content">
+                        <h3>What is Mental Health Hub?</h3>
+                        <p>Mental Health Hub is an AI-driven platform offering mental health resources and support to everyone.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <img src="https://t4.ftcdn.net/jpg/02/31/09/95/360_F_231099575_lZ0t1s4lR3YtrQbeEqUPDqiW0UsQNKcy.jpg" alt="FAQ 2" class="faq-image">
+                    <div class="faq-content">
+                        <h3>How does wearable integration work?</h3>
+                        <p>Our platform securely collects health data from smart devices and provides personalized insights.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <img src="https://t4.ftcdn.net/jpg/02/31/09/95/360_F_231099575_lZ0t1s4lR3YtrQbeEqUPDqiW0UsQNKcy.jpg" alt="FAQ 3" class="faq-image">
+                    <div class="faq-content">
+                        <h3>Is my data secure?</h3>
+                        <p>Your privacy is our top priority. Data is encrypted and confidential.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2024 Mental Health Hub | All Rights Reserved</p>
+    </footer>
+
+    <script>
+        // When the AI Bot div is clicked, start the voice interaction and redirect the user to the backend server
+        // document.getElementById('shareButton').addEventListener('click', function() {
+        //   const { spawn } = require('child_process');
+        //   const child = spawn('python', ['app.py']);
+        //
+        //   child.stdout.on('data', (data) => {
+        //     console.log(`Output: ${data}`);
+        //   });
+        //
+        //   child.stderr.on('data', (data) => {
+        //     console.error(`Error: ${data}`);
+        //   });
+        //
+        //   child.on('close', (code) => {
+        //     console.log(`Process exited with code ${code}`);
+        //   });
+        // });
+        document.addEventListener('DOMContentLoaded', function() {
+        document.getElementById('shareButton').addEventListener('click', function() {
+            const { spawn } = require('child_process');
+            const child = spawn('python', ['app.py']);
+
+            child.stdout.on('data', (data) => {
+                console.log(`Output: ${data}`);
+            });
+
+            child.stderr.on('data', (data) => {
+                console.error(`Error: ${data}`);
+            });
+
+            child.on('close', (code) => {
+                console.log(`Process exited with code ${code}`);
+            });
+        });
+    });
+
+
+
+        // function startVoiceInteraction() {
+        //     const responseSection = document.getElementById('ai-bot-response');
+        //     responseSection.innerHTML = `<p>Starting voice interaction...</p>`;
+        //     // Optionally, add a fetch request here if you want to trigger some action before the redirect
+        // }
+    </script>
+
+</body>
+</html>
